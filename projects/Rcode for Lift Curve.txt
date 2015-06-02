@@ -1,0 +1,6 @@
+liftdata=read.csv("C:/Users/lgh2811/Desktop/projects/liftchart.csv")
+head(liftdata)
+attach(liftdata)
+plot(cum~Obs,data=liftdata,lables=Lift Curve of Discriminant Analysis)
+slope=sum(y)/max(Obs)
+abline(a=0,b=slope)

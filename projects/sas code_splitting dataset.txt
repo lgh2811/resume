@@ -1,0 +1,28 @@
+PROC IMPORT DATAFILE="C:/Users/lgh2811/Desktop/bank/bank-full.csv"                                                                      
+OUT=bank DBMS=csv REPLACE;                                                                                                              
+                                                                                                                                        
+  GETNAMES=YES;                                                                                                                         
+RUN;                                                                                                                                    
+                                                                                                                                        
+title1 'bank';                                                                                                                          
+proc print data=bank (obs=10);                                                                                                          
+run;                                                                                                                                    
+                                                                                                                                        
+                                                                                                                                        
+title2 'Simple Random Sampling';                                                                                                        
+proc surveyselect data=bank                                                                                                             
+   method=srs n=45211 out=bank;                                                                                                         
+run;                                                                                                                                    
+                                                                                                                                        
+data training;                                                                                                                          
+set bank (obs=27127);                                                                                                                   
+run;                                                                                                                                    
+                                                                                                                                        
+data validation;                                                                                                                        
+set bank (firstobs=27128 obs=36169);                                                                                                    
+run;                                                                                                                                    
+                                                                                                                                        
+data testing;                                                                                                                           
+set bank (firstobs=36170);                                                                                                              
+run;                                                                                                                                    
+         
